@@ -2,6 +2,7 @@ using CookieGambler.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace CookieGambler
@@ -12,6 +13,9 @@ namespace CookieGambler
         private GameObject _cookieGO;
         [SerializeField]
         private Transform _fallPoint;
+
+        [SerializeField]
+        private TextMeshPro _textMeshPro;
 
         private List<GameObject> _cookies;
 
@@ -34,6 +38,7 @@ namespace CookieGambler
         {
             CookiesCount += cookiesCount;
             _cookies.Add(GameObject.Instantiate(_cookieGO, _fallPoint));
+            _textMeshPro.text = CookiesCount.ToString();
         }
 
         public override void OnClickAction()
@@ -48,6 +53,7 @@ namespace CookieGambler
             { 
                 Destroy(cookie);
             }
+            _textMeshPro.text = CookiesCount.ToString();
             ActionDone();
         }
     }
