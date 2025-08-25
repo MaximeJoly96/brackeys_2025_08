@@ -1,3 +1,5 @@
+using CookieGambler.Utils;
+using System;
 using UnityEngine;
 namespace CookieGambler
 {
@@ -6,37 +8,25 @@ namespace CookieGambler
     /// </summary>
     public abstract class BaseAction : MonoBehaviour
     {
-        protected virtual void Update()
-        {
-            if (Input.GetMouseButtonDown(0) && IsMouseWithinBounds())
-            {
-                OnClickAction();
-                DecrementActionCount();
-            }
-        }
+        protected event Action OnActionDone;
 
-        /// <summary>
-        /// This method decreases the number of actions achievable
-        /// </summary>
-        protected void DecrementActionCount()
-        {
-            // Update me when action count per turn is implemented
-        }
-
-        /// <summary>
-        /// Checks whether the mouse is currently pointing at any collider in the scene.
-        /// Casts a ray from the main camera to the mouse position and
-        /// <returns> true if it hits any object with a collider.</returns>
-        private bool IsMouseWithinBounds()
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            return Physics.Raycast(ray);
-        }
+        private Collider _collider;
+        public Collider Collider => _collider ??= GetComponent<Collider>();
+        public abstract ActionState ActionType { get; }
+       
         /// <summary>
         /// This is the method that the subclasses must overload.
         /// </summary>
         public abstract void OnClickAction();
+        public virtual void DoInit(Action onActionDone)
+        {
+            OnActionDone += onActionDone;
+        }
+
+        protected void ActionDone()
+        {
+            OnActionDone?.Invoke();
+        }
     }
 }
 
