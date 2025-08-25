@@ -119,6 +119,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!108 &56987435 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4468349162947719737, guid: 72f2f61d714de16449d56340ed4e7f87, type: 3}
+  m_PrefabInstance: {fileID: 4123391350679764208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &280698955 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 6933235213433560467, guid: 72f2f61d714de16449d56340ed4e7f87, type: 3}
+  m_PrefabInstance: {fileID: 4123391350679764208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &442252101 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2228773473575224339, guid: 09ddfae27e36f2e4d900a6c441e7c56f, type: 3}
@@ -130,17 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a008105c23b6be048b7ff67f1925f4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CookieGambler.HungerMeterBar
---- !u!114 &520523983 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8529133134186408028, guid: 09ddfae27e36f2e4d900a6c441e7c56f, type: 3}
-  m_PrefabInstance: {fileID: 5180909748365606259}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7142633a4b333dd48a6ac6e83eb2bddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CookieGambler.RemainingActionDisplayer
 --- !u!114 &822786825 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 859133654946548474, guid: 2b6020604a1efa7478773f3d04730573, type: 3}
@@ -155,6 +154,16 @@ MonoBehaviour:
 --- !u!4 &828472213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5062534592810802040, guid: 72f2f61d714de16449d56340ed4e7f87, type: 3}
+  m_PrefabInstance: {fileID: 4123391350679764208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &980561823 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1135649352747558782, guid: 72f2f61d714de16449d56340ed4e7f87, type: 3}
+  m_PrefabInstance: {fileID: 4123391350679764208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &1108149525 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3193881004305291649, guid: 72f2f61d714de16449d56340ed4e7f87, type: 3}
   m_PrefabInstance: {fileID: 4123391350679764208}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &193002792452756750
@@ -214,6 +223,93 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46a0b518647b2684eb38a58221a5daa4, type: 3}
+--- !u!1001 &1238628456514776772
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 661796023400267577, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: m_Name
+      value: Remaining Action
+      objectReference: {fileID: 0}
+    - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.492
+      objectReference: {fileID: 0}
+    - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.842
+      objectReference: {fileID: 0}
+    - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.561
+      objectReference: {fileID: 0}
+    - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192017167967471916, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: 'allLights.Array.data[0]'
+      value: 
+      objectReference: {fileID: 56987435}
+    - target: {fileID: 4192017167967471916, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: 'allLights.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1108149525}
+    - target: {fileID: 4192017167967471916, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: 'allLights.Array.data[3]'
+      value: 
+      objectReference: {fileID: 980561823}
+    - target: {fileID: 4192017167967471916, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      propertyPath: 'allLights.Array.data[4]'
+      value: 
+      objectReference: {fileID: 280698955}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6793963535479058799, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+--- !u!114 &1238628456514776773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4192017167967471916, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
+  m_PrefabInstance: {fileID: 1238628456514776772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7142633a4b333dd48a6ac6e83eb2bddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CookieGambler.RemainingActionDisplayer
 --- !u!1001 &1449602374183854410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -290,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 5781209655103978642, guid: 1d08e6ad38db05d49bfe1ec9251ec946, type: 3}
       propertyPath: ActionDisplayer
       value: 
-      objectReference: {fileID: 520523983}
+      objectReference: {fileID: 1238628456514776773}
     - target: {fileID: 7518503824927160544, guid: 1d08e6ad38db05d49bfe1ec9251ec946, type: 3}
       propertyPath: m_Name
       value: Game Manager
@@ -567,5 +663,6 @@ SceneRoots:
   - {fileID: 4123391350679764208}
   - {fileID: 1449602374183854410}
   - {fileID: 8689222898397187516}
+  - {fileID: 1238628456514776772}
   - {fileID: 5180909748365606259}
   - {fileID: 3702852990038604785}
