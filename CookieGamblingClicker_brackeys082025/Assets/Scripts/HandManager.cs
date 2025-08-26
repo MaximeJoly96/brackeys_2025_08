@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using CookieGambler.UI;
 
 namespace CookieGambler
 {
@@ -8,8 +9,15 @@ namespace CookieGambler
     {
         [SerializeField]
         private Deck _deck;
+        [SerializeField]
+        private CardInHand _cardInHandPrefab;
+        [SerializeField]
+        private Transform _wrapper;
 
-        private List<Card> _cardsInHand;
+        private List<CardInHand> _cardsInHand;
+        private CardInHand _selectedCard;
+
+        public CardInHand SelectedCard { get { return _selectedCard; } }
 
         private void Awake()
         {
@@ -24,30 +32,40 @@ namespace CookieGambler
         public void AddCardToHand(Card card)
         {
             if(_cardsInHand == null)
-                _cardsInHand = new List<Card>();
+                _cardsInHand = new List<CardInHand>();
 
-            _cardsInHand.Add(card);
+            CardInHand instCard = Instantiate(_cardInHandPrefab, _wrapper);
+            _cardsInHand.Add(instCard);
 
-            card.transform.SetParent(transform);
-            card.ShowFront();
+            instCard.SetEffects(card.Effects);
+            instCard.CardWasClicked.AddListener(SelectCard);
+            instCard.CardWasPlayed.AddListener(PlayCard);
 
-            Render();
+            Destroy(card.gameObject);
         }
 
-        public void Render()
+        public void SelectCard(CardInHand card)
         {
-            if (_cardsInHand == null || _cardsInHand.Count == 0)
-                return;
-
-            float cardWidth = _cardsInHand[0].CardWidth;
-            float totalWidth = cardWidth * _cardsInHand.Count;
-            Vector3 startPos = new Vector3(0.0f - totalWidth / 2.0f, transform.position.y, 0.0f);
-
-            for (int i = 0; i < _cardsInHand.Count; i++)
+            if(_selectedCard == card)
             {
-                _cardsInHand[i].transform.position = new Vector3(cardWidth / 2.0f + startPos.x + cardWidth * i,
-                                                                 startPos.y, 
-                                                                 startPos.z);
+                _selectedCard.Unselect();
+                _selectedCard = null;
+                return;
+            }
+
+            if (_selectedCard)
+                _selectedCard.Unselect();
+
+            _selectedCard = card;
+            _selectedCard.Select();
+        }
+
+        public void PlayCard(CardInHand card)
+        {
+            if(card)
+            {
+                Destroy(card.gameObject);
+                _selectedCard = null;
             }
         }
     }

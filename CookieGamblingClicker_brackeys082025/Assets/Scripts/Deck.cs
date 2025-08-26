@@ -113,8 +113,11 @@ namespace CookieGambler
         public bool IsMouseWithinBounds()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit[] results = new RaycastHit[30];
 
-            return Physics.Raycast(ray);
+            Physics.RaycastNonAlloc(ray, results);
+
+            return results.FirstOrDefault(r => r.collider && r.collider.gameObject.GetComponent<Deck>()).collider;
         }
 
         public void Render()
@@ -123,7 +126,7 @@ namespace CookieGambler
 
             for(int i = 0; i < cardsList.Count; i++)
             {
-                cardsList[i].transform.localPosition = new Vector3(0.05f * i, 0.05f * i);
+                cardsList[i].transform.localPosition = new Vector3(0.0f, 0.0f, 0.05f * i);
             }
         }
     }

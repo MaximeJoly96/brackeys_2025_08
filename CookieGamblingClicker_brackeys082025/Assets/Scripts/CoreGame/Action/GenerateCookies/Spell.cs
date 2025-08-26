@@ -22,14 +22,14 @@ namespace CookieGambler
             _rand = new Random();
         }
 
-        public void UpdateMinBounds(int minBounds)
+        public void IncreaseMinBounds(int change)
         {
-            _minBounds = minBounds;
+            _minBounds += change;
         }
 
-        public void UpdateMaxBounds(int maxBounds)
+        public void IncreaseMaxBounds(int change)
         {
-            _maxBounds = maxBounds;
+            _maxBounds += change;
         }
 
         public int CastCookieSpell()

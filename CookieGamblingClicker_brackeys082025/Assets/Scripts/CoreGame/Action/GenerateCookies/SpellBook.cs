@@ -1,3 +1,4 @@
+using CookieGambler.Effects;
 using CookieGambler.Utils;
 using System;
 using System.Collections;
@@ -22,12 +23,21 @@ namespace CookieGambler
 
         public override void OnClickAction()
         {
-            SummonCookies();
+            HandManager hand = FindFirstObjectByType<HandManager>();
+            if (hand && hand.SelectedCard)
+                hand.SelectedCard.PlayCard();
+            else
+                SummonCookies();
         }
 
-        private void SummonCookies()
+        public void SummonCookies()
         {
-            StartCoroutine(SpawnCookies(_spell.CastCookieSpell()));
+            SummonCookies(_spell.CastCookieSpell());
+        }
+
+        public void SummonCookies(int amount)
+        {
+            StartCoroutine(SpawnCookies(amount));
         }
 
         private IEnumerator SpawnCookies(int amountOfCookies)
@@ -35,15 +45,23 @@ namespace CookieGambler
             for(int i = 0; i < amountOfCookies; i++)
             {
                 _cookiesStock.AddCookie();
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.25f);
             }
 
             ActionDone();
         }
 
-        public void UpdateSpell()
+        public void UpdateSpell(CardEffect effect)
         {
+            if(effect is IncreaseRange)
+            {
+                IncreaseRange increase = effect as IncreaseRange;
+                _spell = new Spell();
+                _spell.IncreaseMinBounds(increase.Amount);
+                _spell.IncreaseMaxBounds(increase.Amount);
+            }
 
+            ActionDone();
         }
     }
 }
