@@ -677,7 +677,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 90663672}
-  - {fileID: 1041478963}
   - {fileID: 508898360}
   - {fileID: 1480107323}
   - {fileID: 1339639607}
@@ -876,7 +875,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 624425211}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 399810387513370865, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
       propertyPath: m_IsActive
@@ -888,15 +887,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2224
+      value: -1.492
       objectReference: {fileID: 0}
     - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.62508
+      value: 0.842
       objectReference: {fileID: 0}
     - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.0738201
+      value: -4.561
       objectReference: {fileID: 0}
     - target: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -969,11 +968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7142633a4b333dd48a6ac6e83eb2bddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CookieGambler.RemainingActionDisplayer
---- !u!4 &1041478963 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 782327203289205539, guid: 5a35241183b329b4a9a45305d7d564f9, type: 3}
-  m_PrefabInstance: {fileID: 1041478961}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1333911825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1316,6 +1310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15aaf02694ecbf04aa7145b1cd372bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
+  _remainingActionDisplayer: {fileID: 1041478962}
   _spellBook: {fileID: 508898356}
   _cookiesStock: {fileID: 731502370}
 --- !u!4 &1824050873 stripped
@@ -1565,4 +1560,5 @@ SceneRoots:
   - {fileID: 2042789739}
   - {fileID: 1708702811}
   - {fileID: 1036826868}
+  - {fileID: 1041478961}
   - {fileID: 624425211}

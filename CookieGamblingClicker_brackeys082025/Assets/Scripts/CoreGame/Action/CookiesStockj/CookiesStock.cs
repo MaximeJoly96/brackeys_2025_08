@@ -39,6 +39,13 @@ namespace CookieGambler
         public void UpdateCurrentCookiesCount(int cookiesCount)
         {
             CookiesCount += cookiesCount;
+            if(CookiesCount%20 == 0)
+            {
+                foreach (GameObject cookie in _cookies)
+                    Destroy(cookie);
+                _cookies = new List<GameObject>();
+            }
+                
             _cookies.Add(GameObject.Instantiate(_cookieGO, _fallPoint));
             _textMeshPro.text = CookiesCount.ToString();
         }
