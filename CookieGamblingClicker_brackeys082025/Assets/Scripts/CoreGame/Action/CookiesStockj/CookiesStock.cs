@@ -13,6 +13,8 @@ namespace CookieGambler
         private GameObject _cookieGO;
         [SerializeField]
         private Transform _fallPoint;
+        [SerializeField] 
+        private HungerMeterBar _hungerMeter;
 
         [SerializeField]
         private TextMeshPro _textMeshPro;
@@ -48,6 +50,7 @@ namespace CookieGambler
 
         private void GiveCoookies()
         {
+            _hungerMeter.Value = CookiesCount;
             CookiesCount = 0;
             foreach (GameObject cookie in _cookies) 
             { 

@@ -6,11 +6,12 @@ namespace CookieGambler
     public class GameController : MonoBehaviour
     {
         [SerializeField]
+        private RemainingActionDisplayer _remainingActionDisplayer;
+
+        [SerializeField]
         private SpellBook _spellBook;
         [SerializeField]
         private CookiesStock _cookiesStock;
-
-        private int _turnLeft = 10;
 
         public ActionState CurrentState { get; private set; }
 
@@ -28,8 +29,8 @@ namespace CookieGambler
 
         public void ResetCurrentState()
         {
-            _turnLeft--;
-            CurrentState = _turnLeft == 0 ? ActionState.MonsterTurn : ActionState.None;
+            _remainingActionDisplayer.RemainingActionCount -= 1;
+            CurrentState = _remainingActionDisplayer.RemainingActionCount == 0 ? ActionState.MonsterTurn : ActionState.None;
         }
 
         private void Update() 

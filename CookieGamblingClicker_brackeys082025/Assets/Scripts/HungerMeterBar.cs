@@ -46,12 +46,9 @@ namespace CookieGambler
                 }
                 else
                 {
-                    if (value > this.value)
-                        GameManager.Instance.Monster.Eat();
-                    else if (value < this.value)
-                        GameManager.Instance.Monster.TakeDamage();
+                    GameManager.Instance.Monster.Eat();
                 }
-
+                this.value += value;
                 this.value = Mathf.Clamp(value, min, max);
 
                 UpdateGauge();
