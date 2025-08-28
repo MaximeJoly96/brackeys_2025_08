@@ -13,11 +13,23 @@ namespace CookieGambler
         private CardInHand _cardInHandPrefab;
         [SerializeField]
         private Transform _wrapper;
+        [SerializeField]
+        private int _handSize;
 
         private List<CardInHand> _cardsInHand;
         private CardInHand _selectedCard;
 
         public CardInHand SelectedCard { get { return _selectedCard; } }
+        public bool IsHandFull
+        {
+            get
+            {
+                if (_cardsInHand == null)
+                    return false;
+
+                return _cardsInHand.Count >= _handSize;
+            }
+        }
 
         private void Awake()
         {
@@ -64,6 +76,8 @@ namespace CookieGambler
         {
             if(card)
             {
+                _cardsInHand.Remove(card);
+
                 Destroy(card.gameObject);
                 _selectedCard = null;
             }

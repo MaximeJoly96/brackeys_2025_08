@@ -57,6 +57,7 @@ namespace CookieGambler
 
         private void Start()
         {
+            Init();
             UpdateGauge();
         }
 
@@ -65,6 +66,28 @@ namespace CookieGambler
             cookiesGauge.minValue = min;
             cookiesGauge.maxValue = max;
             cookiesGauge.value = value;
+        }
+
+        private void Init()
+        {
+            switch(LevelManager.CurrentLevel)
+            {
+                case 0:
+                    max = 20;
+                    break;
+                case 1:
+                    max = 35;
+                    break;
+                case 2:
+                    max = 50;
+                    break;
+                case 3:
+                    max = 80;
+                    break;
+                case 4:
+                    max = 150;
+                    break;
+            }
         }
     }
 }

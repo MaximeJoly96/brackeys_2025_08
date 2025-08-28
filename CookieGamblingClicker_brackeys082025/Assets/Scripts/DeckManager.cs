@@ -1,20 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 namespace CookieGambler
 {
+    [Serializable]
+    public class DeckData
+    {
+        [SerializeField]
+        private int _level;
+        [SerializeField]
+        private List<Card> _cards;
+
+        public int Level { get { return _level; } }
+        public List<Card> Cards { get { return _cards; } }
+    }
+
     public class DeckManager : MonoBehaviour
     {
         [SerializeField]
         private Deck _deck;
 
-        // Subject to change when we need to load the actual cards of the player
         [SerializeField]
-        private List<Card> _cards;
+        private DeckData[] _decks;
 
         private void Awake()
         {
-            InitDeck(_cards);
+            InitDeck(_decks[LevelManager.CurrentLevel].Cards);
         }
 
         public void InitDeck(List<Card> cards)

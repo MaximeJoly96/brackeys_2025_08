@@ -1,4 +1,5 @@
 using CookieGambler.Effects;
+using CookieGambler.UI;
 using CookieGambler.Utils;
 using System;
 using System.Collections;
@@ -12,6 +13,8 @@ namespace CookieGambler
     {
         [SerializeField]
         private CookiesStock _cookiesStock;
+        [SerializeField]
+        private CookieGain _gain;
 
         private Spell _spell;
         public override ActionState ActionType => ActionState.SpellBook;
@@ -37,6 +40,9 @@ namespace CookieGambler
 
         public void SummonCookies(int amount)
         {
+            _gain.UpdateText(amount);
+            _gain.Show();
+
             StartCoroutine(SpawnCookies(amount));
         }
 
@@ -59,6 +65,13 @@ namespace CookieGambler
                 _spell = new Spell();
                 _spell.IncreaseMinBounds(increase.Amount);
                 _spell.IncreaseMaxBounds(increase.Amount);
+            }
+            else if(effect is ReduceRangeGap)
+            {
+                ReduceRangeGap reduce = effect as ReduceRangeGap;
+                _spell = new Spell();
+                _spell.IncreaseMinBounds(reduce.Change);
+                _spell.IncreaseMaxBounds(-reduce.Change);
             }
 
             ActionDone();

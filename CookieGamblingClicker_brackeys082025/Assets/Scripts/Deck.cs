@@ -17,6 +17,8 @@ namespace CookieGambler
         private Stack<Card> _cards;
         private System.Random _rng;
         private UnityEvent<Card> _cardWasDrawn;
+        private GameController _gameController;
+        private HandManager _handManager;
 
         public UnityEvent<Card> CardWasDrawn
         {
@@ -38,6 +40,8 @@ namespace CookieGambler
         {
             _cards = new Stack<Card>();
             _rng = new System.Random();
+            _gameController = FindFirstObjectByType<GameController>();
+            _handManager = FindFirstObjectByType<HandManager>();
         }
 
         public void AddCard(Card card)
@@ -77,6 +81,9 @@ namespace CookieGambler
 
         private void Update()
         {
+            if (_gameController.CurrentState != Utils.ActionState.None)
+                return;
+
             if (IsMouseWithinBounds())
             {
                 if(!_hoverAura.gameObject.activeSelf)
@@ -92,7 +99,7 @@ namespace CookieGambler
 
         public void HandleClicks()
         {
-            if (Input.GetMouseButtonDown(0) && IsMouseWithinBounds())
+            if (Input.GetMouseButtonDown(0) && IsMouseWithinBounds() && !_handManager.IsHandFull)
             {
                 Card drawnCard = Draw();
 

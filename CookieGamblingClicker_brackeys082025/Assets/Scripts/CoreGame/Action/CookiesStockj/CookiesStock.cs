@@ -1,3 +1,4 @@
+using CookieGambler.UI;
 using CookieGambler.Utils;
 using System;
 using System.Collections;
@@ -15,6 +16,8 @@ namespace CookieGambler
         private Transform _fallPoint;
         [SerializeField] 
         private HungerMeterBar _hungerMeter;
+        [SerializeField]
+        private CookieGain _gain;
 
         [SerializeField]
         private TextMeshPro _textMeshPro;
@@ -39,7 +42,8 @@ namespace CookieGambler
         public void UpdateCurrentCookiesCount(int cookiesCount)
         {
             CookiesCount += cookiesCount;
-            if(CookiesCount%20 == 0)
+
+            if(CookiesCount >= 20)
             {
                 foreach (GameObject cookie in _cookies)
                     Destroy(cookie);

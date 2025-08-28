@@ -9,7 +9,8 @@ namespace CookieGambler.Utils
         GiveCookies,
         DrawCard,
         PlayCard,
-        MonsterTurn
+        MonsterTurn,
+        Victory
     }
 }
 

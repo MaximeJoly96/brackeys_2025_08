@@ -19,6 +19,7 @@ namespace CookieGambler.UI
         private List<CardEffect> _effects;
         private UnityEvent<CardInHand> _cardWasClicked;
         private UnityEvent<CardInHand> _cardWasPlayed;
+        private GameController _gameController;
 
         public UnityEvent<CardInHand> CardWasClicked
         {
@@ -42,18 +43,37 @@ namespace CookieGambler.UI
             }
         }
 
+        private void Awake()
+        {
+            _gameController = FindFirstObjectByType<GameController>();
+        }
+
+        public bool IsStateValid()
+        {
+            return _gameController.CurrentState == Utils.ActionState.None;
+        }
+
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (!IsStateValid())
+                return;
+
             CardWasClicked.Invoke(this);
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (!IsStateValid())
+                return;
+
             _outline.enabled = true;
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            if (!IsStateValid())
+                return;
+
             _outline.enabled = false;
         }
 

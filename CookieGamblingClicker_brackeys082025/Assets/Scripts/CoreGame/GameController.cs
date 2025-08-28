@@ -13,7 +13,7 @@ namespace CookieGambler
         [SerializeField]
         private CookiesStock _cookiesStock;
 
-        public ActionState CurrentState { get; private set; }
+        public ActionState CurrentState { get; set; }
 
         private void Awake()
         {
@@ -29,7 +29,7 @@ namespace CookieGambler
 
         public void ResetCurrentState()
         {
-            _remainingActionDisplayer.RemainingActionCount -= 1;
+            _remainingActionDisplayer.RemainingActionCount--;
             CurrentState = _remainingActionDisplayer.RemainingActionCount == 0 ? ActionState.MonsterTurn : ActionState.None;
         }
 
