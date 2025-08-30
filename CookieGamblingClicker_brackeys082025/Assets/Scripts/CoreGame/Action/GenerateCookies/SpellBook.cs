@@ -55,9 +55,8 @@ namespace CookieGambler
             {
                 _cookiesStock.AddCookie();
                 yield return new WaitForSeconds(0.25f);
-            }
-
-            ActionDone();
+            } 
+            // Warning, the ActionDone is called when the animation ends
         }
 
         public void UpdateSpell(CardEffect effect)
