@@ -18,6 +18,8 @@ namespace CookieGambler
         private Animation anim;
         [SerializeField]
         private ParticleSystem particle;
+
+        public bool AnimationInProgress { get; private set; }
         
         private void Start()
         {
@@ -58,22 +60,22 @@ namespace CookieGambler
 
         private IEnumerator TummyFullAnim()
         {
+            AnimationInProgress = true;
             anim.CrossFade(DAMAGE);
             yield return new WaitForSeconds(0.7f);
             anim.CrossFade(DEATH);
             yield return new WaitForSeconds(1.3f);
-
-            GameManager.Instance.GameOverEvent?.Invoke(this, true);
+            AnimationInProgress = false;
         }
 
         private IEnumerator AttackAnim()
         {
+            AnimationInProgress = true;
             anim.CrossFade(ATTACK);
             yield return new WaitForSeconds(0.5f);
             Idle();
             yield return new WaitForSeconds(0.5f);
-
-            GameManager.Instance.GameOverEvent?.Invoke(this, false);
+            AnimationInProgress = false;
         }
 
         private IEnumerator EatAnim()

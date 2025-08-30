@@ -32,6 +32,8 @@ namespace CookieGambler
                 UpdateGauge();
             }
         }
+
+        public bool FullyBelly { get => max <= value; }
         public float Value
         {
             get => value;
@@ -40,16 +42,10 @@ namespace CookieGambler
                 if (GameManager.Instance.IsGameOver)
                     return;
 
-                if (value >= max)
-                {
-                    GameManager.Instance.Monster.TummyFull();
-                }
-                else
-                {
-                    GameManager.Instance.Monster.Eat();
-                }
+                GameManager.Instance.Monster.Eat();
+              
                 this.value += value;
-                this.value = Mathf.Clamp(value, min, max);
+                this.value = Mathf.Clamp(this.value, min, max);
 
                 UpdateGauge();
             }

@@ -28,11 +28,6 @@ namespace CookieGambler
             {
                 remainingActionCount = Mathf.Clamp(value, 0, remainingActionMax);
 
-                if (remainingActionCount <= 0)
-                {
-                    GameManager.Instance.Monster.Attack();
-                }
-
                 UpdateRemainingAction();
             }
         }
@@ -46,6 +41,8 @@ namespace CookieGambler
                 remainingActionCount = remainingActionMax;
             }
         }
+        
+        public bool AnimationInProgess { get; private set; }
 
         private void Start()
         {
@@ -61,6 +58,7 @@ namespace CookieGambler
 
         private IEnumerator ConsumeCandle()
         {
+            AnimationInProgess = true;
             Vector3 initScale = candleBody.transform.localScale;
             Vector3 finalScale = Vector3.one + (CandleSizeFactor * (1f - RemainingActionCount / (float)RemainingActionMax));
 
@@ -75,6 +73,7 @@ namespace CookieGambler
                 }
                 yield return null;
             }
+            AnimationInProgess = false;
         }
     }
 }

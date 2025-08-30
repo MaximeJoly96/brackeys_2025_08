@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace CookieGambler
@@ -17,7 +18,6 @@ namespace CookieGambler
         public RemainingActionDisplayer ActionDisplayer;
         private GameController _gameController;
 
-        public EventHandler<bool> GameOverEvent;
 
         public bool IsGameOver { get; private set; }
 
@@ -36,22 +36,28 @@ namespace CookieGambler
 
         private void Start()
         {
-            GameOverEvent = new EventHandler<bool>((obj, arg) => CheckEndOfLevel(arg));
+        }
+
+        private IEnumerator PlayLose()
+        {
+            GameManager.Instance.Monster.Attack();
+            yield return new WaitUntil(() => !GameManager.Instance.Monster.AnimationInProgress);
+
+            _loseScreen.GetComponent<Animator>().Play("Show");
+        }
+        private IEnumerator PlayVictory()
+        {
+            GameManager.Instance.Monster.TummyFull();
+            yield return new WaitUntil(() => !GameManager.Instance.Monster.AnimationInProgress);
+            _gameController.CurrentState = Utils.ActionState.Victory;
+            _winScreen.GetComponent<Animator>().Play("Show");
         }
 
         public void CheckEndOfLevel(bool isGameOver)
         {
             IsGameOver = isGameOver;
 
-            if(_gameController.CurrentState == Utils.ActionState.MonsterTurn)
-            {
-                _loseScreen.GetComponent<Animator>().Play("Show");
-            }
-            else
-            {
-                _gameController.CurrentState = Utils.ActionState.Victory;
-                _winScreen.GetComponent<Animator>().Play("Show");
-            }
+            StartCoroutine(_gameController.CurrentState == Utils.ActionState.MonsterTurn ? PlayLose() : PlayVictory());
         }
     }
 }

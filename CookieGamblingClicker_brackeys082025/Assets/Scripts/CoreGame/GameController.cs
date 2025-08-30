@@ -13,6 +13,9 @@ namespace CookieGambler
         [SerializeField]
         private CookiesStock _cookiesStock;
 
+        [SerializeField]
+        private HungerMeterBar _hungerMeterBar;
+
         public ActionState CurrentState { get; set; }
 
         private void Awake()
@@ -29,13 +32,26 @@ namespace CookieGambler
 
         public void ResetCurrentState()
         {
-            _remainingActionDisplayer.RemainingActionCount--;
+            if (_hungerMeterBar.FullyBelly) 
+            {
+                CurrentState = ActionState.Victory;
+                GameManager.Instance.CheckEndOfLevel(true);
+                return;
+            }
+
+            if(_remainingActionDisplayer.RemainingActionCount <= 0)
+            {
+                CurrentState = ActionState.MonsterTurn;
+                GameManager.Instance.CheckEndOfLevel(false);
+                return;
+            }
             CurrentState = _remainingActionDisplayer.RemainingActionCount == 0 ? ActionState.MonsterTurn : ActionState.None;
         }
 
         private void Update() 
         {
             if (CurrentState == ActionState.None && 
+                !_remainingActionDisplayer.AnimationInProgess &&
                 Input.GetMouseButtonDown(0)) 
             {
                 IsMouseWithinBounds();
@@ -52,6 +68,7 @@ namespace CookieGambler
                 BaseAction action = hit.collider.gameObject.GetComponent<BaseAction>();
                 if(action != null)
                 {
+                    _remainingActionDisplayer.RemainingActionCount--;
                     CurrentState = action.ActionType;
                     action.OnClickAction();
                 }
