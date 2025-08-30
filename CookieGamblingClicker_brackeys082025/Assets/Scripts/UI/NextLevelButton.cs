@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ namespace CookieGambler.UI
     {
         [SerializeField]
         private Image _background;
+        [SerializeField]
         private GameController _gameController;
 
         private void Awake()
