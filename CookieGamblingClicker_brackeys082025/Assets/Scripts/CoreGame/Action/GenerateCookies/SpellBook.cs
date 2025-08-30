@@ -16,12 +16,15 @@ namespace CookieGambler
         [SerializeField]
         private CookieGain _gain;
 
+        private Animator _animation;
+
         private Spell _spell;
         public override ActionState ActionType => ActionState.SpellBook;
         public override void DoInit(Action onActionDone)
         {
             base.DoInit(onActionDone);
             _spell = new Spell();
+            _animation = GetComponent<Animator>();
         }
 
         public override void OnClickAction()
@@ -30,7 +33,7 @@ namespace CookieGambler
             if (hand && hand.SelectedCard)
                 hand.SelectedCard.PlayCard();
             else
-                SummonCookies();
+                _animation.Play("Armature_ArmatureAction", 0, 0.0f);
         }
 
         public void SummonCookies()
